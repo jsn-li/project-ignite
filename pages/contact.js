@@ -3,7 +3,7 @@ import { RichText } from 'prismic-reactjs';
 import { client } from '../prismic-configuration';
 import styled from 'styled-components';
 import { Form, Input, Button } from 'antd';
-import { Section, PageHeader, Centered } from '../components/Blocks';
+import { Section, PageHeader, Centered, RoundedButton } from '../components/Blocks';
 import * as emailjs from 'emailjs-com'
 
 const { TextArea } = Input;
@@ -70,7 +70,7 @@ const Contact = (props) => {
               </Form.Item>
               <Form.Item>
                 <Centered>
-                  <Button type="primary" htmlType="submit">Submit</Button>
+                  <RoundedButton size="large" type="primary" htmlType="submit">Submit</RoundedButton>
                 </Centered>
               </Form.Item>
             </Form>

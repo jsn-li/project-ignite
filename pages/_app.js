@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { Context as ResponsiveContext } from 'react-responsive'
 import '../styles/my-theme.less';
-
 import CustomMenu from '../components/CustomMenu';
 
 const { Header, Content, Footer } = Layout;

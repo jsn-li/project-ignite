@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { Button } from 'antd';
 
 export const Section = styled.section`
-  padding: 2.5em 0 2.5em 0;
+  padding: 2em 0 0 0;
   width: 100%;
   height: 100%;
 `;
@@ -14,5 +15,9 @@ export const PageHeader = styled.section`
 `;
 
 export const Centered = styled.div`
-text-align: center;
+  text-align: center;
 `;
+
+export const RoundedButton = styled(Button)`
+  border-radius: 0.5em;
+`

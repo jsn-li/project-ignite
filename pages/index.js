@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { client, hrefResolver, linkResolver } from '../prismic-configuration';
 import { Card, Button, Space, Divider, Row, Col } from 'antd';
 
-import { Section, Centered } from '../components/Blocks';
+import { Section, Centered, RoundedButton } from '../components/Blocks';
 
 const Landing = styled(Section)`
   display: flex;
@@ -13,7 +13,7 @@ const Landing = styled(Section)`
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 95vh;
+  height: 80vh;
 
   h1 {
     font-size: 3.5em;
@@ -38,7 +38,6 @@ const Landing = styled(Section)`
   @media (min-width: 992px) {
     flex-direction: row;
     text-align: left;
-    height: 80vh;
   }
 `;
 
@@ -65,7 +64,7 @@ const Homepage = (props) => {
         <div>
           <h1>{RichText.asText(props.home.data.title)}</h1>
           <p>{RichText.asText(props.home.data.subtitle)}</p>
-          <Button type="primary" size="large" href="#register">{RichText.asText(props.home.data.action_button_text)}</Button>
+          <RoundedButton type="primary" size="large" href="#register">{RichText.asText(props.home.data.action_button_text)}</RoundedButton>
         </div>
         <img src={props.home.data.banner.url} alt={props.home.data.banner.alt} />
       </Landing>
@@ -85,7 +84,7 @@ const Homepage = (props) => {
           ))}
         </Row>
       </Section>
-
+      <Divider></Divider>
       {/* action groups */}
       <Section>
         <Space direction="vertical" id="register">
@@ -93,7 +92,7 @@ const Homepage = (props) => {
             <StyledCard key={RichText.asText(group.header)} title={RichText.asText(group.header)}>
               <p>{RichText.asText(group.body)}</p>
               <Centered>
-                <Button type="primary" href={group.button_link.url} target="_blank">{RichText.asText(group.button_text)}</Button>
+                <RoundedButton size="large" type="primary" href={group.button_link.url} target="_blank">{RichText.asText(group.button_text)}</RoundedButton>
               </Centered>
             </StyledCard>
           ))}
