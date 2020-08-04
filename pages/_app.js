@@ -48,6 +48,8 @@ const Logo = styled.div`
 `;
 
 const MediaQuery = styled.div`
+  width: 100%;
+
   .mobile {
     display: inline;
   }
@@ -60,6 +62,7 @@ const MediaQuery = styled.div`
     }
     .desktop {
       display: inline;
+      overflow: wrap;
     }
   }
 `;

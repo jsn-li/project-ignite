@@ -71,8 +71,8 @@ const Team = (props) => {
     setSelected(e.key);
   };
 
-  const TeamCardBuilder = ({person, key}) => (
-    <TeamCard key={key}>
+  const TeamCardBuilder = ({person}) => (
+    <TeamCard>
       <img src={person.portrait.url} alt={person.name} />
       <h1>{RichText.asText(person.name)}</h1>
       <h4>{RichText.asText(person.position)}</h4>
