@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { client, hrefResolver, linkResolver } from '../prismic-configuration';
 import { Card, Button, Space, Divider, Row, Col } from 'antd';
 
-import { Section, Centered, RoundedButton } from '../components/Blocks';
+import { Section, CenteredTextWrapper, RoundedButton } from '../components/Blocks';
 
 const Landing = styled(Section)`
   display: flex;
@@ -75,9 +75,9 @@ const Homepage = (props) => {
           {props.home.data.info_group.map((group) => (
             <Col key={RichText.asText(group.header)} xs={24} md={12}>
               <StyledCard title={RichText.asText(group.header)} bordered={false}>
-                <Centered>
+                <CenteredTextWrapper>
                   <img src={group.image.url} alt={group.image.alt} />
-                </Centered>
+                </CenteredTextWrapper>
                 <p>{RichText.asText(group.body)}</p>
               </StyledCard>
             </Col>
@@ -91,9 +91,9 @@ const Homepage = (props) => {
           {props.home.data.action_group.map((group) => (
             <StyledCard key={RichText.asText(group.header)} title={RichText.asText(group.header)}>
               <p>{RichText.asText(group.body)}</p>
-              <Centered>
+              <CenteredTextWrapper>
                 <RoundedButton size="large" type="primary" href={group.button_link.url} target="_blank">{RichText.asText(group.button_text)}</RoundedButton>
-              </Centered>
+              </CenteredTextWrapper>
             </StyledCard>
           ))}
         </Space>

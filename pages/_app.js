@@ -95,7 +95,7 @@ function MyApp({ Component, pageProps }) {
           closable={false}
           onClose={onClose}
           visible={visible}>
-          <CustomMenu routes={ROUTES} theme="light" mode="vertical" defaultSelectedKeys={[router.pathname]}/>
+          <CustomMenu routes={ROUTES} theme="light" mode="vertical" onClick={toggleDrawer} defaultSelectedKeys={[router.pathname]}/>
         </Drawer>
         <Main>
           <StyledHeader theme="light">

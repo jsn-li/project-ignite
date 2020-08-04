@@ -14,10 +14,16 @@ export const PageHeader = styled.section`
   }
 `;
 
-export const Centered = styled.div`
+export const CenteredTextWrapper = styled.div`
   text-align: center;
 `;
 
 export const RoundedButton = styled(Button)`
   border-radius: 0.5em;
 `
+
+export const CenteredDivWrapper = styled.div`
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+`;

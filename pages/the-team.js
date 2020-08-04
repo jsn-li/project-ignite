@@ -4,7 +4,7 @@ import { RichText } from 'prismic-reactjs';
 import { client, hrefResolver, linkResolver } from '../prismic-configuration';
 import { Col, Row, Menu, Space, Card, Divider } from 'antd';
 import styled from 'styled-components';
-import { Section, PageHeader, Centered } from '../components/Blocks';
+import { Section, PageHeader, CenteredTextWrapper, CenteredDivWrapper } from '../components/Blocks';
 import { SecurityScanTwoTone } from '@ant-design/icons';
 
 const TeamCard = styled(Card)`
@@ -41,8 +41,16 @@ const TeamCard = styled(Card)`
 
 const MediaQuery = styled.div`
   .mobile {
+    overflow: scroll;
     display: block;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
   }
+  .mobile::-webkit-scrollbar {
+    display: none;
+  }
+
   .desktop {
     display: none;
   }
@@ -63,8 +71,8 @@ const Team = (props) => {
     setSelected(e.key);
   };
 
-  const renderTeamCard = person => (
-    <TeamCard key={RichText.asText(person.name)}>
+  const TeamCardBuilder = ({person, key}) => (
+    <TeamCard key={key}>
       <img src={person.portrait.url} alt={person.name} />
       <h1>{RichText.asText(person.name)}</h1>
       <h4>{RichText.asText(person.position)}</h4>
@@ -85,20 +93,22 @@ const Team = (props) => {
                 <Menu.Item key={group.chapter.uid}>{RichText.asText(props.chapterMap[group.chapter.uid].data.header)}</Menu.Item>
               ))}
             </Menu>
-            <Menu className="mobile" mode="horizontal" onClick={handleClick} defaultSelectedKeys={[selected]}>
-              {props.teamPage.data.chapter_group.map((group) => (
-                <Menu.Item key={group.chapter.uid}>{RichText.asText(props.chapterMap[group.chapter.uid].data.header)}</Menu.Item>
-              ))}
-            </Menu>
+            <div className="mobile">
+              <Menu mode="horizontal" onClick={handleClick} defaultSelectedKeys={[selected]}>
+                {props.teamPage.data.chapter_group.map((group) => (
+                  <Menu.Item key={group.chapter.uid}>{RichText.asText(props.chapterMap[group.chapter.uid].data.header)}</Menu.Item>
+                ))}
+              </Menu>
+            </div>
           </MediaQuery>
         </Col>
         <Col xs={24} md={16}>
-          <Centered>
+          <CenteredTextWrapper>
             <h2>{RichText.asText(props.chapterMap[selected].data.header)}</h2>
-          </Centered>
+          </CenteredTextWrapper>
           <Space direction="vertical">
             {props.chapterMap[selected].data.person.map((person) => (
-              renderTeamCard(person)
+              <TeamCardBuilder person={person} key={RichText.asText(person.name)}/>
             ))}
           </Space>
           <>
@@ -109,7 +119,7 @@ const Team = (props) => {
                     <Divider>{RichText.asText(slice.primary['chapter_section'])}</Divider>
                     <Space direction="vertical">
                       {slice.items.map((person) => (
-                        renderTeamCard(person)
+                        <TeamCardBuilder person={person} key={RichText.asText(person.name)}/>
                       ))}
                     </Space>
                   </>

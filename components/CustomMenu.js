@@ -13,7 +13,7 @@ const CustomMenu = (props) => {
       {props.routes.map((route) => {
         return(
           <Menu.Item key={route.route}>
-            <Link href={route.route}><a>{route.name}</a></Link>
+            <Link href={route.route}><a onClick={props.hasOwnProperty("onClick") ? () => props.onClick() : () => void(0)}>{route.name}</a></Link>
           </Menu.Item>
         );
       })}
