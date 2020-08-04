@@ -34,6 +34,7 @@ const Main = styled.div`
   width: 100%;
   max-width: 1000px;
   min-width: 300px;
+  overflow: hidden;
 `;
 
 const StyledFooter = styled(Footer)`
