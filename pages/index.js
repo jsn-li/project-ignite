@@ -45,7 +45,13 @@ const Landing = styled(Section)`
 const StyledCard = styled(Card)`
   border-radius: 0.5em;
 
-   
+  img {
+    width: 100%;
+    height: 350px;
+    border-radius: 0.5em;
+    object-fit: cover;
+    margin-bottom: 1.5em;
+  }
 `;
 
 const Homepage = (props) => {
