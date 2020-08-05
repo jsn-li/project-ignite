@@ -16,6 +16,14 @@ const FormWrapper = styled(CenteredDivWrapper)`
   transform: translateX(-50%);
 `;
 
+const RoundedInput = styled(Input)`
+  border-radius: 0.5em;
+`;
+
+const RoundedTextArea = styled(TextArea)`
+  border-radius: 0.5em;
+`;
+
 const Contact = (props) => {
   const [form] = Form.useForm();
   const [submitted, setSubmitted] = React.useState(false);
@@ -57,16 +65,16 @@ const Contact = (props) => {
               onFinishFailed={onFinishFailed}
             >
               <Form.Item name="name" label="Name" rules={[{ required: true, type: 'string', message: 'Please enter your name!' }]}>
-                <Input/>
+                <RoundedInput size="large"/>
               </Form.Item>
               <Form.Item name="email" label="Email" type="email" rules={[{ required: true, type: 'email', message: 'Please enter a valid email address!' }]}>
-                <Input/>
+                <RoundedInput size="large"/>
               </Form.Item>
               <Form.Item name="subject" label="Subject" rules={[{ required: true,  message: 'Please enter a subject!' }]}>
-                <Input/>
+                <RoundedInput size="large"/>
               </Form.Item>
               <Form.Item name="message" label="Message" rules={[{ required: true,  message: 'Please enter a message!' }]}>
-                <TextArea rows={6}/>
+                <RoundedTextArea size="large" rows={6}/>
               </Form.Item>
               <Form.Item>
                 <CenteredTextWrapper>

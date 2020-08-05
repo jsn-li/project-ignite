@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { Button } from 'antd';
 
 export const Section = styled.section`
-  padding: 2em 0 0 0;
   width: 100%;
   height: 100%;
 `;
 
 export const PageHeader = styled.section`
+  padding: 2em 0 0 0;
   text-align: center;
   h1 {
     font-size: 3em;

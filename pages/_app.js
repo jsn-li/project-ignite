@@ -48,12 +48,12 @@ const Logo = styled.div`
 `;
 
 const MediaQuery = styled.div`
-  width: 100%;
-
   .mobile {
     display: inline;
   }
   .desktop {
+    width: 425px;
+    white-space: nowrap;
     display: none;
   }
   @media (min-width: 768px) {
@@ -62,7 +62,6 @@ const MediaQuery = styled.div`
     }
     .desktop {
       display: inline;
-      overflow: wrap;
     }
   }
 `;

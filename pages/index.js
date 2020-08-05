@@ -16,6 +16,7 @@ const Landing = styled(Section)`
   height: 80vh;
 
   h1 {
+    white-space: nowrap;
     font-size: 3.5em;
     margin-bottom: 0px;
   }
@@ -25,7 +26,6 @@ const Landing = styled(Section)`
   }
 
   div {
-    white-space: nowrap;
     padding: 50px;
     /* TODO: change based upon the logo padding */
   }
@@ -64,6 +64,7 @@ const Homepage = (props) => {
         <div>
           <h1>{RichText.asText(props.home.data.title)}</h1>
           <p>{RichText.asText(props.home.data.subtitle)}</p>
+          <p>{RichText.asText(props.home.data.subtitle_2)}</p>
           <RoundedButton type="primary" size="large" href="#register">{RichText.asText(props.home.data.action_button_text)}</RoundedButton>
         </div>
         <img src={props.home.data.banner.url} alt={props.home.data.banner.alt} />
