@@ -21,6 +21,10 @@ const TeamCard = styled(StyledCard)`
     border-radius: 0.5em;
   }
   
+  h1 {
+    margin: 0;
+  }
+
   p {
     margin-bottom: 0;
   }
