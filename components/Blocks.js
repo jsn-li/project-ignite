@@ -1,12 +1,7 @@
 import styled from 'styled-components';
-import { Button } from 'antd';
+import { Button, Card } from 'antd';
 
-export const Section = styled.section`
-  width: 100%;
-  height: 100%;
-`;
-
-export const PageHeader = styled.section`
+export const PageHeader = styled.div`
   padding: 2em 0 0 0;
   text-align: center;
   h1 {
@@ -14,7 +9,7 @@ export const PageHeader = styled.section`
   }
 `;
 
-export const CenteredTextWrapper = styled.div`
+export const CenteredText = styled.div`
   text-align: center;
 `;
 
@@ -22,8 +17,14 @@ export const RoundedButton = styled(Button)`
   border-radius: 0.5em;
 `
 
-export const CenteredDivWrapper = styled.div`
+export const CenteredDiv = styled.div`
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+`;
+
+export const StyledCard = styled(Card)`
+  border-radius: 0.5em;
+  height: 100%;
+  width: 100%;
 `;

@@ -4,12 +4,10 @@ import { RichText } from 'prismic-reactjs';
 import { client, hrefResolver, linkResolver } from '../prismic-configuration';
 import { Col, Row, Menu, Space, Card, Divider } from 'antd';
 import styled from 'styled-components';
-import { Section, PageHeader, CenteredTextWrapper, CenteredDivWrapper } from '../components/Blocks';
+import { StyledCard, PageHeader, CenteredText } from '../components/Blocks';
 import { SecurityScanTwoTone } from '@ant-design/icons';
 
-const TeamCard = styled(Card)`
-  border-radius: 0.5em;
-
+const TeamCard = styled(StyledCard)`
   img {
     width: 256px;
     height: 256px;
@@ -24,7 +22,7 @@ const TeamCard = styled(Card)`
   }
   
   p {
-    margin: 0;
+    margin-bottom: 0;
   }
 
   @media (min-width: 576px) {
@@ -81,31 +79,33 @@ const Team = (props) => {
   );
 
   return(
-    <Section>
+    <>
       <PageHeader>
         <h1>{RichText.asText(props.teamPage.data.header)}</h1>
       </PageHeader>
       <Row gutter={[16, 16]}>
         <Col xs={24} md={8}>
           <MediaQuery>
-            <Menu className="desktop" mode="vertical" onClick={handleClick} defaultSelectedKeys={[selected]}>
-              {props.teamPage.data.chapter_group.map((group) => (
-                <Menu.Item key={group.chapter.uid}>{RichText.asText(props.chapterMap[group.chapter.uid].data.header)}</Menu.Item>
-              ))}
-            </Menu>
-            <div className="mobile">
-              <Menu mode="horizontal" onClick={handleClick} defaultSelectedKeys={[selected]}>
+            <StyledCard title={<CenteredText>Branch</CenteredText>}>
+              <Menu className="desktop" mode="vertical" onClick={handleClick} defaultSelectedKeys={[selected]}>
                 {props.teamPage.data.chapter_group.map((group) => (
                   <Menu.Item key={group.chapter.uid}>{RichText.asText(props.chapterMap[group.chapter.uid].data.header)}</Menu.Item>
                 ))}
               </Menu>
-            </div>
+              <div className="mobile">
+                <Menu mode="horizontal" onClick={handleClick} defaultSelectedKeys={[selected]}>
+                  {props.teamPage.data.chapter_group.map((group) => (
+                    <Menu.Item key={group.chapter.uid}>{RichText.asText(props.chapterMap[group.chapter.uid].data.header)}</Menu.Item>
+                  ))}
+                </Menu>
+              </div>
+            </StyledCard>
           </MediaQuery>
         </Col>
         <Col xs={24} md={16}>
-          <CenteredTextWrapper>
+          <CenteredText>
             <h2>{RichText.asText(props.chapterMap[selected].data.header)}</h2>
-          </CenteredTextWrapper>
+          </CenteredText>
           <Space direction="vertical">
             {props.chapterMap[selected].data.person.map((person) => (
               <TeamCardBuilder person={person} key={RichText.asText(person.name)}/>
@@ -115,14 +115,14 @@ const Team = (props) => {
             {props.chapterMap[selected].data.body.length > 0 ? 
               <>
                 {props.chapterMap[selected].data.body.map((slice) => (
-                  <>
+                  <React.Fragment key={RichText.asText(slice.primary['chapter_section'])}>
                     <Divider>{RichText.asText(slice.primary['chapter_section'])}</Divider>
                     <Space direction="vertical">
                       {slice.items.map((person) => (
                         <TeamCardBuilder person={person} key={RichText.asText(person.name)}/>
                       ))}
                     </Space>
-                  </>
+                  </React.Fragment>
                 ))}
               </>
               :
@@ -131,7 +131,7 @@ const Team = (props) => {
           </>
         </Col>
       </Row>
-    </Section>
+    </>
   );
 }
 

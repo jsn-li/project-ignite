@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import { client, hrefResolver, linkResolver } from '../prismic-configuration';
 import { Card, Button, Space, Divider, Row, Col } from 'antd';
 
-import { Section, CenteredTextWrapper, RoundedButton } from '../components/Blocks';
+import { CenteredText, RoundedButton, StyledCard } from '../components/Blocks';
 
-const Landing = styled(Section)`
+const Landing = styled.div`
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
@@ -41,9 +41,7 @@ const Landing = styled(Section)`
   }
 `;
 
-const StyledCard = styled(Card)`
-  border-radius: 0.5em;
-
+const ImageCard = styled(StyledCard)`
   img {
     width: 100%;
     height: 350px;
@@ -56,7 +54,7 @@ const StyledCard = styled(Card)`
 const Homepage = (props) => {
 
   return(
-    <div>
+    <>
       <Head>
         <title>Home &#124; Project Ignite</title>
       </Head>
@@ -69,37 +67,37 @@ const Homepage = (props) => {
         </div>
         <img src={props.home.data.banner.url} alt={props.home.data.banner.alt} />
       </Landing>
+      <Divider/>
 
       {/* info groups */}
-      <Section>
-        <Row gutter={[16]}>
-          {props.home.data.info_group.map((group) => (
-            <Col key={RichText.asText(group.header)} xs={24} md={12}>
-              <StyledCard title={RichText.asText(group.header)} bordered={false}>
-                <CenteredTextWrapper>
-                  <img src={group.image.url} alt={group.image.alt} />
-                </CenteredTextWrapper>
-                <p>{RichText.asText(group.body)}</p>
-              </StyledCard>
-            </Col>
-          ))}
-        </Row>
-      </Section>
-      <Divider></Divider>
-      {/* action groups */}
-      <Section>
-        <Space direction="vertical" id="register">
-          {props.home.data.action_group.map((group) => (
-            <StyledCard key={RichText.asText(group.header)} title={RichText.asText(group.header)}>
+      <Row gutter={[16, 16]}>
+        {props.home.data.info_group.map((group) => (
+          <Col key={RichText.asText(group.header)} xs={24} md={12}>
+            <ImageCard title={RichText.asText(group.header)} bordered={false}>
+              <CenteredText>
+                <img src={group.image.url} alt={group.image.alt} />
+              </CenteredText>
               <p>{RichText.asText(group.body)}</p>
-              <CenteredTextWrapper>
+            </ImageCard>
+          </Col>
+        ))}
+      </Row>
+      <Divider/>
+
+      {/* action groups */}
+      <Row gutter={[16, 16]} id="register">
+        {props.home.data.action_group.map((group) => (
+          <Col span={24} key={RichText.asText(group.header)}>
+            <StyledCard title={RichText.asText(group.header)}>
+              <p>{RichText.asText(group.body)}</p>
+              <CenteredText>
                 <RoundedButton size="large" type="primary" href={group.button_link.url} target="_blank">{RichText.asText(group.button_text)}</RoundedButton>
-              </CenteredTextWrapper>
+              </CenteredText>
             </StyledCard>
-          ))}
-        </Space>
-      </Section>
-    </div>
+          </Col>
+        ))}
+      </Row>
+    </>
   );
 }
 

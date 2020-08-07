@@ -3,17 +3,14 @@ import { RichText } from 'prismic-reactjs';
 import { client } from '../prismic-configuration';
 import styled from 'styled-components';
 import { Form, Input, Button } from 'antd';
-import { Section, PageHeader, CenteredTextWrapper, RoundedButton, CenteredDivWrapper } from '../components/Blocks';
+import { ContentWrapper, PageHeader, CenteredText, RoundedButton, CenteredDiv } from '../components/Blocks';
 import * as emailjs from 'emailjs-com'
 
 const { TextArea } = Input;
 
-const FormWrapper = styled(CenteredDivWrapper)`
-  position: relative;
+const FormWrapper = styled(CenteredDiv)`
   padding: 1.5em;
   max-width: 500px;
-  left: 50%;
-  transform: translateX(-50%);
 `;
 
 const RoundedInput = styled(Input)`
@@ -49,14 +46,14 @@ const Contact = (props) => {
   };
 
   return(
-    <Section>
+    <>
       <PageHeader>
         <h1>{RichText.asText(props.contact.data.header)}</h1>
         <p>{RichText.asText(props.contact.data.information)}</p>
       </PageHeader>
       <FormWrapper>
         {submitted ? 
-          <CenteredTextWrapper><h1>Your message has been sent.</h1></CenteredTextWrapper>
+          <CenteredText><h1>Your message has been sent.</h1></CenteredText>
           :
             <Form
               layout="vertical"
@@ -77,14 +74,14 @@ const Contact = (props) => {
                 <RoundedTextArea size="large" rows={6}/>
               </Form.Item>
               <Form.Item>
-                <CenteredTextWrapper>
+                <CenteredText>
                   <RoundedButton size="large" type="primary" htmlType="submit">Submit</RoundedButton>
-                </CenteredTextWrapper>
+                </CenteredText>
               </Form.Item>
             </Form>
         }
       </FormWrapper>
-    </Section>
+    </>
   );
 }
 
