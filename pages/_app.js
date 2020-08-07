@@ -31,8 +31,8 @@ const StyledHeader = styled(Header)`
 const StyledContent = styled(Content)`
   padding: 0 1em 0 1em;
   max-width: 1000px;
-  width: 95%;
   min-width: 300px;
+  overflow: hidden;
 `;
 
 const StyledSpace = styled(Space)`

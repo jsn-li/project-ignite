@@ -13,12 +13,12 @@ const Landing = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 80vh;
+  height: 95vh;
 
   h1 {
     white-space: nowrap;
     font-size: 3.5em;
-    margin-bottom: 0px;
+    margin: 0;
   }
 
   p {
@@ -26,18 +26,22 @@ const Landing = styled.div`
   }
 
   div {
-    padding: 50px;
+    padding: 25px 50px 50px 50px;
     /* TODO: change based upon the logo padding */
   }
 
   img {
-    max-height: 50%;
-    max-width: 90%;
+    max-width:60%;
+    max-height:40%;
   }
-
+  
   @media (min-width: 992px) {
     flex-direction: row;
     text-align: left;
+
+    div {
+      padding: 50px;
+    }
   }
 `;
 
