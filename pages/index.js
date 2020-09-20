@@ -1,11 +1,11 @@
-import React from 'react';
-import Head from 'next/head';
-import { RichText } from 'prismic-reactjs';
-import styled from 'styled-components';
-import { client, hrefResolver, linkResolver } from '../prismic-configuration';
-import { Card, Button, Space, Divider, Row, Col } from 'antd';
+import React from "react";
+import Head from "next/head";
+import { RichText } from "prismic-reactjs";
+import styled from "styled-components";
+import { client, hrefResolver, linkResolver } from "../prismic-configuration";
+import { Card, Button, Space, Divider, Row, Col } from "antd";
 
-import { CenteredText, RoundedButton, StyledCard } from '../components/Blocks';
+import { CenteredText, RoundedButton, StyledCard } from "../components/Blocks";
 
 const Landing = styled.div`
   display: flex;
@@ -31,10 +31,10 @@ const Landing = styled.div`
   }
 
   img {
-    max-width:60%;
-    max-height:40%;
+    max-width: 60%;
+    max-height: 40%;
   }
-  
+
   @media (min-width: 992px) {
     flex-direction: row;
     text-align: left;
@@ -56,8 +56,7 @@ const ImageCard = styled(StyledCard)`
 `;
 
 const Homepage = (props) => {
-
-  return(
+  return (
     <>
       <Head>
         <title>Home &#124; Project Ignite</title>
@@ -66,12 +65,14 @@ const Homepage = (props) => {
         <div>
           <h1>{RichText.asText(props.home.data.title)}</h1>
           <p>{RichText.asText(props.home.data.subtitle)}</p>
-          <p>{RichText.asText(props.home.data.subtitle_2)}</p>
-          <RoundedButton type="primary" size="large" href="#register">{RichText.asText(props.home.data.action_button_text)}</RoundedButton>
+          {RichText.render(props.home.data.subtitle_2)}
+          <RoundedButton type="primary" size="large" href="#register">
+            {RichText.asText(props.home.data.action_button_text)}
+          </RoundedButton>
         </div>
         <img src={props.home.data.banner.url} alt={props.home.data.banner.alt} />
       </Landing>
-      <Divider/>
+      <Divider />
 
       {/* info groups */}
       <Row gutter={[16, 16]}>
@@ -86,7 +87,7 @@ const Homepage = (props) => {
           </Col>
         ))}
       </Row>
-      <Divider/>
+      <Divider />
 
       {/* action groups */}
       <Row gutter={[16, 16]} id="register">
@@ -95,7 +96,14 @@ const Homepage = (props) => {
             <StyledCard title={RichText.asText(group.header)}>
               <p>{RichText.asText(group.body)}</p>
               <CenteredText>
-                <RoundedButton size="large" type="primary" href={group.button_link.url} target="_blank">{RichText.asText(group.button_text)}</RoundedButton>
+                <RoundedButton
+                  size="large"
+                  type="primary"
+                  href={group.button_link.url}
+                  target="_blank"
+                >
+                  {RichText.asText(group.button_text)}
+                </RoundedButton>
               </CenteredText>
             </StyledCard>
           </Col>
@@ -103,11 +111,11 @@ const Homepage = (props) => {
       </Row>
     </>
   );
-}
+};
 
-Homepage.getInitialProps = async context => {
-  const home = await client.getSingle('homepage');
-  return { home }
-}
+Homepage.getInitialProps = async (context) => {
+  const home = await client.getSingle("homepage");
+  return { home };
+};
 
 export default Homepage;
