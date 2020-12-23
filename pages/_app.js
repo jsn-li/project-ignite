@@ -70,6 +70,7 @@ function MyApp({ Component, pageProps }) {
     // {route: '/curriculum', name: 'Curriculum'},
     { route: "/the-team", name: "The Team" },
     { route: "/testimonials", name: "Testimonials" },
+    { route: "/volunteer", name: "Volunteer" },
     { route: "/contact", name: "Contact" },
   ];
 
