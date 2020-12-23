@@ -8,6 +8,9 @@ const Volunteer = (props) => {
   console.log(props.volunteer.data.button_url);
   return (
     <>
+      <Head>
+        <title>Volunteer &#124; Project Ignite</title>
+      </Head>
       <PageHeader>
         <h1>{RichText.asText(props.volunteer.data.header)}</h1>
         <p>{RichText.asText(props.volunteer.data.information)}</p>
