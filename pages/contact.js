@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import { RichText } from "prismic-reactjs";
 import { client } from "../prismic-configuration";
 import styled from "styled-components";
@@ -113,4 +114,3 @@ Contact.getInitialProps = async (context) => {
 };
 
 export default Contact;
-

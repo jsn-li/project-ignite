@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
 import { client, hrefResolver, linkResolver } from "../prismic-configuration";
@@ -162,4 +163,3 @@ Team.getInitialProps = async (context) => {
 };
 
 export default Team;
-
