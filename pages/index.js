@@ -14,15 +14,10 @@ const Landing = styled.div`
   justify-content: center;
   text-align: center;
   height: 95vh;
-
+  
   h1 {
     white-space: nowrap;
-    font-size: 3.5em;
     margin: 0;
-  }
-
-  p {
-    font-size: 1.25em;
   }
 
   div {
@@ -31,14 +26,28 @@ const Landing = styled.div`
   }
 
   img {
-    max-width: 60%;
-    max-height: 40%;
+    width: auto;
+    height: 30%;
   }
-
+  
   @media (min-width: 992px) {
     flex-direction: row;
     text-align: left;
+    
+      h1 {
+        font-size: 3.5em;
+      }
 
+      p {
+        font-size: 1.25em;
+      }
+    
+    img {
+      width: 50%;
+      height: auto;
+      max-height: 350px;
+    }
+    
     div {
       padding: 50px;
     }

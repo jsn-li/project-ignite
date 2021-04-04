@@ -1,14 +1,13 @@
 import React from "react";
 import Head from "next/head";
-import Link from "next/link";
-import { Layout, Drawer, Button, Space } from "antd";
-import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
+import {Button, Drawer, Layout, Space} from "antd";
+import {CloseOutlined, MenuOutlined} from "@ant-design/icons";
 import styled from "styled-components";
-import { useRouter } from "next/router";
-import { Context as ResponsiveContext } from "react-responsive";
+import {useRouter} from "next/router";
 import "../styles/my-theme.less";
 import CustomMenu from "../components/CustomMenu";
-import { CenteredText, ContentWrapper } from "../components/Blocks";
+import {CenteredText} from "../components/Blocks";
+
 const { Header, Content, Footer } = Layout;
 
 const Flexbox = styled.div`
@@ -54,7 +53,7 @@ const MediaQuery = styled.div`
   .desktop {
     display: none;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 915px) {
     .mobile {
       display: none;
     }
