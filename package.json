@@ -1,7 +1,7 @@
 {
-  "name": "prismic-next-blog",
+  "name": "project-ignite",
   "version": "1.0.0",
-  "description": "Guide code for building a simple blog that uses Prismic+Next+Now",
+  "description": "Website for Project Ignite",
   "main": "index.js",
   "scripts": {
     "dev": "next",
