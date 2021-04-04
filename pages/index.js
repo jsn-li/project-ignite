@@ -17,6 +17,7 @@ const Landing = styled.div`
   
   h1 {
     white-space: nowrap;
+    font-size: 2.75em;
     margin: 0;
   }
 
